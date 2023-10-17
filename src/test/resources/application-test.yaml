@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:tc:postgresql:latest:///test
+    username: test
+    password: test
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+#  liquibase:
+#    change-log: classpath:db/changelog/db.changelog-main.yaml
+#    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+#    user: test
+#    password: test
+#    url: jdbc:tc:postgresql:latest:///test

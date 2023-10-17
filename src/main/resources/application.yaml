@@ -1,0 +1,48 @@
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/payment
+    username: payment
+    password: supersecret
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-main.yaml
+#    user: test
+#    password: test
+
+  mail:
+    host: localhost
+    port: 3025
+    username:
+    password:
+    properties:
+      debug: true
+      smtp:
+        auth: false
+        starttls:
+          enable: false
+          required: false
+        connectiontimeout: 5000
+        timeout: 3000
+        writetimeout: 3000
+
+server:
+  port: 8080
+
+management:
+  health:
+    mail:
+      enabled: true
+  endpoint:
+    health:
+      show-details: always
+      probes:
+        enabled: true
+
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus,loggers
+

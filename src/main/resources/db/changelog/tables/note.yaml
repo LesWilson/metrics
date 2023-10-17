@@ -1,0 +1,47 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 20230804-table-note-create
+      author: leswilson
+      changes:
+        - preConditions:
+            - not:
+                - tableExists:
+                    tableName: note
+            - onFail: MARK_RAN
+        - createTable:
+            tableName: note
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    constraintName: pk_note
+                    primaryKey: true
+              - column:
+                  name: description
+                  type: clob
+                  constraints:
+                    nullable: false
+              - column:
+                  name: json_info
+                  type: jsonb
+              - column:
+                  name: created_at
+                  type: datetime
+                  defaultValueComputed: current_datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_by
+                  type: varchar(200)
+              - column:
+                  name: updated_at
+                  type: datetime
+                  defaultValueComputed: current_datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_by
+                  type: varchar(200)
